@@ -142,6 +142,7 @@ class CKEditor
 			$out .= $this->init();
 		}
 
+      $config = array_merge($config, \Laravel\Config::get('ckeditor::config.kcfinder.paths')); // Add KCFinder paths
 		$_config = $this->configSettings($config, $events);
 
 		$js = $this->returnGlobalEvents();
