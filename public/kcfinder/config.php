@@ -4,7 +4,7 @@
   *
   *      @desc Base configuration file
   *   @package KCFinder
-  *   @version 2.51
+  *   @version 2.52-dev
   *    @author Pavel Tzonkov <pavelc@users.sourceforge.net>
   * @copyright 2010, 2011 KCFinder Project
   *   @license http://www.opensource.org/licenses/gpl-2.0.php GPLv2
@@ -28,7 +28,7 @@ $_CONFIG = array(
     'uploadURL' => "/upload",
     'uploadDir' => "",
 
-    'dirPerms' => 0777,
+    'dirPerms' => 0755,
     'filePerms' => 0644,
 
     'access' => array(
@@ -53,14 +53,14 @@ $_CONFIG = array(
     'types' => array(
 
         // CKEditor & FCKEditor types
-        // 'files'   =>  "",
-        // 'flash'   =>  "swf",
-        // 'images'  =>  "*img",
+         'files'   =>  "",
+         'flash'   =>  "swf",
+         'images'  =>  "*img",
 
         // TinyMCE types
-        'file'    =>  "",
-        'media'   =>  "swf flv avi mpg mpeg qt mov wmv asf rm",
-        'image'   =>  "*img",
+        // 'file'    =>  "",
+        // 'media'   =>  "swf flv avi mpg mpeg qt mov wmv asf rm",
+        // 'image'   =>  "*img",
     ),
 
     'filenameChangeChars' => array(
@@ -91,7 +91,7 @@ $_CONFIG = array(
 
     // THE FOLLOWING SETTINGS CANNOT BE OVERRIDED WITH SESSION CONFIGURATION
     '_check4htaccess' => true,
-//    '_tinyMCEPath' => "../../../media/js/tiny_mce/",
+//    '_tinyMCEPath' => "/tiny_mce/",
 
     '_sessionVar' => &$_SESSION['KCFINDER'],
     //'_sessionLifetime' => 30,
