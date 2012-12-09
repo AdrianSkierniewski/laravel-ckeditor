@@ -25,7 +25,7 @@ $_CONFIG = array(
 
     'theme' => "dark",
 
-    'uploadURL' => "/upload",
+    'uploadURL' => "upload/",
     'uploadDir' => "",
 
     'dirPerms' => 0755,
