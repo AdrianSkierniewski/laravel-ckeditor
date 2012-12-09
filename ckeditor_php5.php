@@ -90,16 +90,25 @@ class CKEditor
 	 * An array that holds global event listeners.
 	 */
 	private $globalEvents = array();
-
+   /**
+    * is KCFinder enabled
+    */
+   private $KCFinder = false;
 	/**
 	 * Main Constructor.
 	 *
 	 *  @param $basePath (string) URL to the %CKEditor installation directory (optional).
 	 */
-	function __construct($basePath = null) {
+	function __construct($basePath = null, $KCFinder = true) {
 		if (!empty($basePath)) {
 			$this->basePath = $basePath;
 		}
+      if($KCFinder){
+         $this->KCFinder = true;
+         if(empty($_SESSION['KCFINDER'])){
+           $_SESSION['KCFINDER'] = array('disabled' => false); // Enabling KCFinder
+         }
+      }
 	}
 
 	/**
@@ -142,8 +151,10 @@ class CKEditor
 			$out .= $this->init();
 		}
 
-      $config = array_merge($config, \Laravel\Config::get('ckeditor::config.kcfinder.paths')); // Add KCFinder paths
-		$_config = $this->configSettings($config, $events);
+      if($this->KCFinder){
+         $config = array_merge($config, \Laravel\Config::get('ckeditor::config.kcfinder.paths')); // Add KCFinder paths
+      }
+      $_config = $this->configSettings($config, $events);
 
 		$js = $this->returnGlobalEvents();
 		if (!empty($_config))
