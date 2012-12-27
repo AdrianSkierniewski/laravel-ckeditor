@@ -22,10 +22,6 @@ CKEditor Bundle allows you to generate CKEditor rich text boxes for your Laravel
 
 <pre>php artisan bundle:publish</pre>
 
-######5. Add the following to your view file to include the CKEditor Javascript:
-
-<pre>Asset::container('ckeditor')->scripts();</pre>
-
 ######To create a super simple rich text box:
 
 <pre>

@@ -14,10 +14,6 @@ Autoloader::map(array(
 	'CKEditor\\CKEditor'               => __DIR__.'/ckeditor_php5.php',
 ));
 
-Asset::container('ckeditor')->bundle('ckeditor');
-
-Asset::container('ckeditor')->add('ckeditor',  'ckeditor/ckeditor.js');
-
 if ( ! Request::cli() ) {
 	session_start(); // KCFinder security need php session
 }

@@ -494,40 +494,42 @@ class CKEditor
 	{
 		if (!empty($this->basePath)) {
 			return $this->basePath;
-		}
-
-		/**
-		 * The absolute pathname of the currently executing script.
-		 * Note: If a script is executed with the CLI, as a relative path, such as file.php or ../file.php,
-		 * $_SERVER['SCRIPT_FILENAME'] will contain the relative path specified by the user.
-		 */
-		if (isset($_SERVER['SCRIPT_FILENAME'])) {
-			$realPath = dirname($_SERVER['SCRIPT_FILENAME']);
-		}
-		else {
-			/**
-			 * realpath - Returns canonicalized absolute pathname
-			 */
-			$realPath = realpath( './' ) ;
-		}
-
-		/**
-		 * The filename of the currently executing script, relative to the document root.
-		 * For instance, $_SERVER['PHP_SELF'] in a script at the address http://example.com/test.php/foo.bar
-		 * would be /test.php/foo.bar.
-		 */
-		$selfPath = dirname($_SERVER['PHP_SELF']);
-		$file = str_replace("\\", "/", __FILE__);
-
-		if (!$selfPath || !$realPath || !$file) {
-			return "/ckeditor/";
-		}
-
-		$documentRoot = substr($realPath, 0, strlen($realPath) - strlen($selfPath));
-		$fileUrl = substr($file, strlen($documentRoot));
-		$ckeditorUrl = str_replace("ckeditor_php5.php", "", $fileUrl);
-
-		return $ckeditorUrl;
+		}else{
+         return \Laravel\URL::base() . '/bundles/ckeditor/ckeditor/';
+      }
+//      Not used in Laravel
+//		/**
+//		 * The absolute pathname of the currently executing script.
+//		 * Note: If a script is executed with the CLI, as a relative path, such as file.php or ../file.php,
+//		 * $_SERVER['SCRIPT_FILENAME'] will contain the relative path specified by the user.
+//		 */
+//		if (isset($_SERVER['SCRIPT_FILENAME'])) {
+//			$realPath = dirname($_SERVER['SCRIPT_FILENAME']);
+//		}
+//		else {
+//			/**
+//			 * realpath - Returns canonicalized absolute pathname
+//			 */
+//			$realPath = realpath( './' ) ;
+//		}
+//
+//		/**
+//		 * The filename of the currently executing script, relative to the document root.
+//		 * For instance, $_SERVER['PHP_SELF'] in a script at the address http://example.com/test.php/foo.bar
+//		 * would be /test.php/foo.bar.
+//		 */
+//		$selfPath = dirname($_SERVER['PHP_SELF']);
+//		$file = str_replace("\\", "/", __FILE__);
+//
+//		if (!$selfPath || !$realPath || !$file) {
+//			return "/ckeditor/";
+//		}
+//
+//		$documentRoot = substr($realPath, 0, strlen($realPath) - strlen($selfPath));
+//		$fileUrl = substr($file, strlen($documentRoot));
+//		$ckeditorUrl = str_replace("ckeditor_php5.php", "", $fileUrl);
+//
+//		return $ckeditorUrl;
 	}
 
 	/**
